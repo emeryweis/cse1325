@@ -10,8 +10,8 @@ public class Hello{
             //name = in.nextLine();
             System.out.println("Hello " + name + "!");
         }
-        catch (Exception E) {
-            System.err.println(E.getMessage());
+        catch (Exception e) {
+            System.out.println("Couldn't find hostname");
         }
     }
 }
