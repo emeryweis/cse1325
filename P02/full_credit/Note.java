@@ -14,7 +14,11 @@ public class Note{
     @Override
     public String toString() {
         if(pitch == null) return " ";
-        else return (pitch.toString() + octave);
+        else {
+            if (octave != 0) {
+                return (pitch.toString() + octave);
+            }
+        }
         
     }
     
