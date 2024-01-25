@@ -7,6 +7,7 @@ public class Note{
     //constructor w/ parameters
     public Note(Pitch pitch, int octave) {
         this.pitch = pitch;
+        this.octave = octave;
         if (octave < -5) octave = -5;
         if (octave > 4) octave = 4;
     }
@@ -15,9 +16,10 @@ public class Note{
     public String toString() {
         if(pitch == null) return " ";
         else {
-            if (octave != 0) {
-                return (pitch.toString() + octave);
+            if (octave == 0) {
+                return (pitch.toString());
             }
+            else return (pitch.toString() + octave);
         }
         
     }
