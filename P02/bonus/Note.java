@@ -10,7 +10,9 @@ public class Note{
         this.octave = octave;
         if (octave < -5) octave = -5;
         if (octave > 4) octave = 4;
+        
     }
+
     //toString method including override
     @Override
     public String toString() {
@@ -19,7 +21,7 @@ public class Note{
             if (octave == 0) {
                 return (pitch.toString());
             }
-            else return (pitch.toString() + octave);
+            else return (pitch.toString() + subscript[octave+5]);
         }
         
     }
@@ -27,5 +29,6 @@ public class Note{
     //private fields
     private Pitch pitch;
     private int octave;
+    private String[] subscript = {"⁻⁵", "⁻⁴", "⁻³", "⁻²", "⁻¹", "⁰", "¹", "²", "³", "⁴"};
 
 }
