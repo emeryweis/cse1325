@@ -5,26 +5,26 @@ public class Product {
         throw new IllegalArgumentException("Inavlid price of " + name + ": " + price);
       }
 
-      Product.nextStockNumber = (int)Math.floor(Math.random() * (1000 - 0 + 1) + 0);
-
+      this.stockNumber = nextStockNumber;
+      nextStockNumber++;
       this.name = name;
       this.price = price;
    }
 
    public int getStockNumber(){
-
+      return stockNumber;
    }
 
    public int getPrice(){
-
+      return price;
    }
    
    @Override
    public String toString(){
-
+      return String.format ("%-30s $ %3.2f", name, price);
    }
    
-    private static int nextStockNumber;
+    private static int nextStockNumber = 0;
     private int stockNumber;
     private String name;
     private int price;
