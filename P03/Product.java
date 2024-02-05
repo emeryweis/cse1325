@@ -21,11 +21,11 @@ public class Product {
    
    @Override
    public String toString(){
-      return String.format ("%-30s $ %3.2f", name, price);
+      return String.format ("%-30s $ %d", name, price);
    }
    
     private static int nextStockNumber = 0;
     private int stockNumber;
     private String name;
-    private int price;
+    int price;
 }

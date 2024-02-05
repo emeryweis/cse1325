@@ -16,6 +16,11 @@ public class Customer {
         
     }
 
+    @Override
+    public String toString() {
+        return name + '(' + email + ')';
+    }
+
     private String name;
     private String email;
 }
