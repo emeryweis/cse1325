@@ -2,7 +2,7 @@ public class Product {
 
    public Product (String name, int price) {
       if (price < 0) {
-        throw new IllegalArgumentException("Inavlid price of " + name + ": " + price);
+        throw new IllegalArgumentException("Inavlid price of " + name + ": " + (double)price/100);
       }
 
       this.stockNumber = nextStockNumber;
@@ -21,7 +21,7 @@ public class Product {
    
    @Override
    public String toString(){
-      return String.format ("%-30s $ %d", name, price);
+      return String.format ("%-30s $ %5.2f", name, (double)price/100);
    }
    
     private static int nextStockNumber = 0;
