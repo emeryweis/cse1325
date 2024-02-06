@@ -3,14 +3,14 @@ public class Customer {
     public Customer(String name, String email) {
         this.name = name;
         this.email = email;
-        int astIndex;
+        int at;
 
         if (email.indexOf("@") == -1) {
             throw new IllegalArgumentException("Invalid email address: " + email);
         } else {
-            astIndex = email.indexOf("@");
+            at = email.indexOf("@");
         }
-        if (email.indexOf(".", astIndex) == -   1 ) {
+        if (email.indexOf(".", at) == -   1 ) {
             throw new IllegalArgumentException("Invalid email address: " + email);
         }
         
@@ -18,7 +18,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return name + '(' + email + ')';
+        return String.format("%s (%s)", name, email);
     }
 
     private String name;

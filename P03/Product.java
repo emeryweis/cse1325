@@ -27,5 +27,5 @@ public class Product {
     private static int nextStockNumber = 0;
     private int stockNumber;
     private String name;
-    int price;
+    private int price;
 }

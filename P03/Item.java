@@ -6,7 +6,7 @@ public class Item {
     } 
     
     int getPrice() {
-        return quantity * product.price;
+        return quantity * product.getPrice();
     }
 
     @Override
