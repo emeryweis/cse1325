@@ -13,20 +13,20 @@ public class Order {
     }
 
     public void addItem(Item item) {
-
+        items.add(item);
     }
 
     public int getPrice() {
-        
+        return getPrice();
     }
 
     @Override 
     public String toString() {
-
+        return String.format("Order for "  )
     }
 
     private static int nextOrderNumber = 1;
     private int orderNumber;
-    private ArrayList<Item> item;
+    private ArrayList<Item> items;
     private Customer customer;
 }
