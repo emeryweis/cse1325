@@ -22,7 +22,9 @@ public class Order {
 
     @Override 
     public String toString() {
-        return String.format("Order for "  )
+        return String.format("Order " + orderNumber + " for " + customer + "\n" 
+         + items + "\n"
+        + "Order Total: " + getPrice());
     }
 
     private static int nextOrderNumber = 1;
