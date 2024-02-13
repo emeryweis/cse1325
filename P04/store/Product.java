@@ -28,6 +28,6 @@ public abstract class Product {
    
     private static int nextStockNumber = 0;
     private int stockNumber;
-    private String name;
-    private int price;
+    protected String name;
+    protected int price;
 }
