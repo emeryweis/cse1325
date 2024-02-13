@@ -12,7 +12,7 @@ public class Customer {
         } else {
             at = email.indexOf("@");
         }
-        if (email.indexOf(".", at) == -   1 ) {
+        if (email.indexOf(".", at) == -1 ) {
             throw new IllegalArgumentException("Invalid email address: " + email);
         }
         
