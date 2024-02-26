@@ -23,7 +23,7 @@ public abstract class Product {
    
    @Override
    public String toString(){
-      return String.format ("%-30s $ %5.2f", name, (double)price/100);
+      return String.format ("%-30s $   %5.2f", name, (double)price/100);
    }
    
     private static int nextStockNumber = 0;

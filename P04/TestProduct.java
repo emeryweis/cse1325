@@ -1,4 +1,5 @@
 import store.Product;
+import store.Plant;
 
 public class TestProduct {
     public static void main(String[] args) {
@@ -7,7 +8,7 @@ public class TestProduct {
     
         // TEST VECTOR: Throws IllegalArgumentException on negative price
         try {
-            store.Product p = new store.Product("Bad", -1);
+            store.Plant p = new Plant("Bad", -1, null);
             System.err.println("FAIL: Product accepted negative price");
             result |= vector;
         } catch(IllegalArgumentException e) {
@@ -18,8 +19,8 @@ public class TestProduct {
         vector <<= 1;
         
         // TEST VECTOR: Creates correct stock numbers
-        store.Product p1 = new store.Product("Valiant Apricot Vinca", 1195);
-        store.Product p2 = new store.Product("Valiant Lilac Vinca", 1295);
+        store.Plant p1 = new Plant("Valiant Apricot Vinca", 1195, null);
+        store.Plant p2 = new Plant("Valiant Lilac Vinca", 1295, null);
         if(p1.getStockNumber() != 0 || p2.getStockNumber() != 1) {
             System.err.println("FAIL: Incorrect Product stock number "
                              + p1.getStockNumber() + " (0 expected) or "
