@@ -21,26 +21,33 @@ public class Store {
     public void addCustomer(Customer customer) {
         customers.add(customer);
     }
-    public void getCustomerList() {
+    public String getCustomerList() {
         for (int i = 0; i < customers.size(); i++) {
             System.out.println(i + " " + customers.get(i));
         }
+        return customers.toString();
     }
 
     public void addProduct(Product product) {
         products.add(product);
     }
-    public void getProductList() {
+    public String getProductList() {
         for (int i = 0; i < products.size(); i++) {
             System.out.println(i + " " + products.get(i));
         }
+        return products.toString();
     }
 
     public int newOrder(int customerIndex) {
-        Order s = new Order(Customer);
+        Customer customer = customers.get(customerIndex);
+        Order o = new Order(customer);
+        orders.add(o);
+        return orders.indexOf(o);
     }
     public void addToOrder(int orderIndex, int productIndex, int quantity) {
-
+        Product p = products.get(productIndex);
+        Item itm = new Item(p, quantity);
+        Order.addItem(itm);
     }
     public String getOrderList() {
 
