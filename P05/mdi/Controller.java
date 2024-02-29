@@ -73,7 +73,11 @@ public class Controller {
 
 
     private String getView() {
-
+        String result = "INVALID VIEW";
+        if (view == View.CUSTOMERS) result = store.getCustomerList();
+        if (view == View.PRODUCTS) result = store.getProductsList();
+        if (view == View.ORDERS) result = store.getOrderList();
+        return result;
     }
     private ArrayList<Integer> selectFromMenu() {
 
