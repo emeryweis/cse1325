@@ -1,17 +1,22 @@
 package store;
 
 import java.util.ArrayList;
-import menu.Menu;
-import menu.MenuItem;
+
+import mdi.Menu;
+import mdi.MenuItem;
 
 
 public class Store {
     private String name;
-    private ArrayList<Customer> customers = new ArrayList<Customer>();
-    private ArrayList<Product> products = new ArrayList<Product>();
-    private ArrayList<Order> orders = new ArrayList<Order>();
+    private ArrayList<Customer> customers;
+    private ArrayList<Product> products;
+    private ArrayList<Order> orders;
 
     public Store(String name) {
+        this.name = name;
+        this.customers = new ArrayList<>();
+        this.products = new ArrayList<>();
+        this.orders = new ArrayList<>();
 
     }
     public String getName() {

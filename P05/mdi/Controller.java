@@ -1,7 +1,14 @@
-package menu;
-import store.Store;
+package mdi;
 
-import java.util.ArrayList;
+import store.Store;
+import store.Customer;
+import store.Item;
+import store.Order;
+import store.Product;
+import store.Tool;
+import store.Plant;
+import store.Exposure;
+
 import java.util.Scanner;
 
 public class Controller {
@@ -9,23 +16,39 @@ public class Controller {
     private View view;
     private Menu mainMenu;
     private String output;
-    private boolean isRunning = true;
+    private boolean isRunning;
     private Scanner in;
 
     public Controller(String storeName){
-        Store s = new Store(storeName);
+        this.store = new Store(storeName);
+        this.view = View.CUSTOMERS;
+        this.isRunning = true;
         this.output = "";
-        this.mainMenu = new Menu();
 
+        this.in = new Scanner(System.in);
+
+        mainMenu = new Menu();
+
+        mainMenu.addMenuItem(new MenuItem("Exit",               () -> exit()));
+        mainMenu.addMenuItem(new MenuItem("Place order",        () -> placeOrder()));
         mainMenu.addMenuItem(new MenuItem("Add a customer",     () -> newCustomer()));
         mainMenu.addMenuItem(new MenuItem("Add a tool",         () -> newTool()));
         mainMenu.addMenuItem(new MenuItem("Add a plant",        () -> newPlant()));
+        mainMenu.addMenuItem(new MenuItem("Change view",        () -> switchView()));
     }
+
     public void mdi() {
-        while (isRunning == true) {
-            in = new Scanner(System.in);
-            int selection = in.nextLine();
-            mainMenu.run(in);
+        Integer selection = null;
+        while(isRunning) {
+            try {
+                selection = selectFromMenu();
+                output = "";
+                if (selection == null) continue;
+                if (selection == -1) testData();
+                else mainMenu.run(selection);
+            } catch(Exception e) {
+                print("#### Error: " + e.getMessage());
+            }
         }
     }
 

@@ -1,4 +1,5 @@
-package menu;
+package mdi;
+
 
 public class MenuItem implements Runnable {
     public MenuItem(Object menuText, Runnable menuResponse) {

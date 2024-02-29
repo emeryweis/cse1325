@@ -1,4 +1,4 @@
-package menu;
+package mdi;
 
 import java.util.ArrayList;
 
