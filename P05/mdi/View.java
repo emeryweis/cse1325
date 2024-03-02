@@ -1,5 +1,10 @@
 package mdi;
 
 public enum View {
-    Customers, Products, Orders;
+    CUSTOMERS, ORDERS, PRODUCTS;
+    private static String[] views = new String[]{"Customers", "Orders", "Products"};
+    @Override
+    public String toString() {
+        return views[this.ordinal()];
+    }
 }

@@ -2,10 +2,6 @@ package store;
 
 import java.util.ArrayList;
 
-import mdi.Menu;
-import mdi.MenuItem;
-
-
 public class Store {
     private String name;
     private ArrayList<Customer> customers;
@@ -27,37 +23,36 @@ public class Store {
         customers.add(customer);
     }
     public String getCustomerList() {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < customers.size(); i++) {
-            System.out.println(i + " " + customers.get(i));
+            sb.append(String.format("%3d] %s\n", i, customers.get(i)));
         }
-        return customers.toString();
+        return sb.toString();
     }
 
     public void addProduct(Product product) {
         products.add(product);
     }
     public String getProductList() {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < products.size(); i++) {
-            System.out.println(i + " " + products.get(i));
+            sb.append(String.format("%3d] %s\n", i, products.get(i)));
         }
-        return products.toString();
+        return sb.toString();
     }
 
     public int newOrder(int customerIndex) {
-        Customer customer = customers.get(customerIndex);
-        Order o = new Order(customer);
-        orders.add(o);
-        return orders.indexOf(o);
+        orders.add(new Order(customers.get(customerIndex)));
+        return orders.size() - 1;
     }
     public void addToOrder(int orderIndex, int productIndex, int quantity) {
-        Product p = products.get(productIndex);
-        Item itm = new Item(p, quantity);
-        Order(o).addItem(itm);
+        orders.get(orderIndex).addItem(new Item(products.get(productIndex), quantity));
     }
     public String getOrderList() {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < orders.size(); i++) {
-            System.out.println(i + " " + orders.get(i));
+            sb.append(String.format("\n%s\n", orders.get(i)));
         }
-        return orders.toString();
+        return sb.toString();
     }
 }
