@@ -34,7 +34,9 @@ public class Controller {
     private boolean isRunning;
     private Scanner in;
 
-    private String filename;
+    private String filename = "Untitled.store";
+    private Store storeRecreated = null;
+
 
     public Controller(String storeName){
         this.store = new Store(storeName);
@@ -212,19 +214,33 @@ public class Controller {
 
     private void save() throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
-            Store.save(bw);
+            store.save(bw);
             System.out.println("Wrote store to " + filename);
         } catch (Exception e) {
             System.err.println("Failed to save: " + e);
         }
     }
 
-    private void saveAs() {
+    private void saveAs() throws IOException {
         System.out.println("Enter a Store filename to save: ");
         String s = in.nextLine();
         if (s.isEmpty()) return;
         filename = s;
         save();
+    }
+
+    private void open() throws IOException {
+        System.out.println("Enter a Store filename to open: ");
+        String s = in.nextLine();
+        if (!s.isEmpty()) filename = s;
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            storeRecreated = new Store(br);
+            System.out.println("Opened storeRecreated from " + filename);
+        } catch (Exception e) {
+            System.err.println("Failed to read: " + e);
+            storeRecreated = null;
+        }
+
     }
 
     public void testData() {
