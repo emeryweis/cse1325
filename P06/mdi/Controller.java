@@ -54,6 +54,22 @@ public class Controller {
         mainMenu.addMenuItem(new MenuItem("Add a tool",         () -> newTool()));
         mainMenu.addMenuItem(new MenuItem("Add a plant",        () -> newPlant()));
         mainMenu.addMenuItem(new MenuItem("Change view",        () -> switchView()));
+        
+        mainMenu.addMenuItem(new MenuItem("Save",               () -> {
+            try {
+                save();
+            } catch (Exception e) {
+                System.err.println("Couldn't save. Error: " + e);
+            }
+        }));
+        
+        mainMenu.addMenuItem(new MenuItem("Save As",            () -> {
+            try {
+                saveAs();
+            } catch (Exception e) {
+                System.err.println("Couldn't create new file. Error: " + e);
+            }
+        }));
     }
 
     public void mdi() {
@@ -69,9 +85,11 @@ public class Controller {
                 print("#### Error: " + e.getMessage());
             }
         }
+
         store = new Store("Manga");
         System.out.println(store.toString());
 
+/*        
         System.out.println("\nWriting store data to " + filename);
         try {
             save();
@@ -93,7 +111,7 @@ public class Controller {
         } catch (Exception e) {
             System.err.println("\nCould not open file: " + e);
         }
-
+*/
     }
 
     private void exit(){
@@ -125,6 +143,11 @@ public class Controller {
         store.addCustomer(customer);
         print("Created new customer: " + customer);
         view = View.CUSTOMERS;
+        try {
+            save();
+        } catch (Exception e) {
+            System.err.println("Adding customer didn't work. error: " + e);
+        }
     }
 
     private void newTool() {
