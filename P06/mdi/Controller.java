@@ -8,6 +8,12 @@ package mdi;
     or (at your option) any later version.
 */
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.FileWriter;
+
 import store.Store;
 import store.Customer;
 import store.Item;
@@ -20,12 +26,15 @@ import store.Exposure;
 import java.util.Scanner;
 
 public class Controller {
+
     private Store store;
     private View view;
     private Menu mainMenu;
     private String output;
     private boolean isRunning;
     private Scanner in;
+
+    private String filename;
 
     public Controller(String storeName){
         this.store = new Store(storeName);
@@ -199,6 +208,13 @@ public class Controller {
             }
         }
         return d;
+    }
+
+    private void save() throws IOException {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
+            store.save(bw);
+            System.out.println("Wrote store to " + filename);
+        }
     }
 
     public void testData() {
