@@ -75,5 +75,7 @@ public class Store {
 
     public void save(BufferedWriter bw) throws IOException {
         bw.write(name + "\n");
+        bw.write("Number of customers" + customers.size() + "\n");
+        for (Customer c : customers) bw.write("" + c.toString() + "\n");
     }
 }

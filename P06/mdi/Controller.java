@@ -34,7 +34,7 @@ public class Controller {
     private boolean isRunning;
     private Scanner in;
 
-    private String filename = "Untitled.store";
+    private String filename = "Untitled.txt";
     private Store storeRecreated = null;
 
 
@@ -69,6 +69,31 @@ public class Controller {
                 print("#### Error: " + e.getMessage());
             }
         }
+        store = new Store("Manga");
+        System.out.println(store.toString());
+
+        System.out.println("\nWriting store data to " + filename);
+        try {
+            save();
+        } catch (Exception e) {
+            System.err.println("\nCould not write to file: " + e);
+        }
+        
+        System.out.println("\nWriting store data to new file");
+        try {
+            saveAs();
+        } catch (Exception e) {
+            System.err.println("\nCould not create new file: " + e);
+        }
+
+        System.out.println("\nOpening a Store file");
+        try {
+            open();
+            System.out.println(storeRecreated.toString());
+        } catch (Exception e) {
+            System.err.println("\nCould not open file: " + e);
+        }
+
     }
 
     private void exit(){

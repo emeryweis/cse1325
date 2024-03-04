@@ -15,3 +15,4 @@ public class Manga {
         controller.mdi();
     }
 }
+
