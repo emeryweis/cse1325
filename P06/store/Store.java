@@ -72,4 +72,8 @@ public class Store {
     public Store(BufferedReader br) throws IOException {
         this.name = br.readLine();
     }
+
+    public void save(BufferedWriter bw) throws IOException {
+        bw.write(name + "\n");
+    }
 }
