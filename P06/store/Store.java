@@ -8,6 +8,11 @@ package store;
     or (at your option) any later version.
 */
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+
+
 import java.util.ArrayList;
 
 public class Store {
@@ -62,5 +67,9 @@ public class Store {
             sb.append(String.format("\n%s\n", orders.get(i)));
         }
         return sb.toString();
+    }
+
+    public Store(BufferedReader br) throws IOException {
+        this.name = br.readLine();
     }
 }
