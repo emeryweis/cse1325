@@ -71,11 +71,14 @@ public class Store {
 
     public Store(BufferedReader br) throws IOException {
         this.name = br.readLine();
+        
     }
 
     public void save(BufferedWriter bw) throws IOException {
         bw.write(name + "\n");
-        bw.write("Number of customers" + customers.size() + "\n");
+        bw.write("" + customers.size() + "\n");
         for (Customer c : customers) bw.write("" + c.toString() + "\n");
+        bw.write("" + products.size() + "\n");
+        for (Product p : products) bw.write("" + p + "\n");
     }
 }
