@@ -1,5 +1,9 @@
 package store;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 public abstract class Product {
 
    public Product (String name, int price) {
@@ -11,6 +15,16 @@ public abstract class Product {
       nextStockNumber++;
       this.name = name;
       this.price = price;
+   }
+
+   public Product(BufferedReader br) throws IOException {
+      this.name = br.readLine();
+      this.price = Integer.parseInt (br.readLine());
+   }
+
+   public void save(BufferedWriter bw) throws IOException {
+      bw.write(name + "\n");
+      bw.write(price + "\n");
    }
 
    public int getStockNumber(){
