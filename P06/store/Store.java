@@ -79,6 +79,9 @@ public class Store {
         bw.write("" + customers.size() + "\n");
         for (Customer c : customers) bw.write("" + c.toString() + "\n");
         bw.write("" + products.size() + "\n");
-        for (Product p : products) bw.write("" + p + "\n");
+        for (Product p : products){
+            bw.write(p.getClass().getName() + "\n");
+            p.save(bw);
+        }
     }
 }
