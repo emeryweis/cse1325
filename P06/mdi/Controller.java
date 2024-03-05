@@ -54,22 +54,8 @@ public class Controller {
         mainMenu.addMenuItem(new MenuItem("Add a tool",         () -> newTool()));
         mainMenu.addMenuItem(new MenuItem("Add a plant",        () -> newPlant()));
         mainMenu.addMenuItem(new MenuItem("Change view",        () -> switchView()));
-        
-        mainMenu.addMenuItem(new MenuItem("Save",               () -> {
-            try {
-                save();
-            } catch (Exception e) {
-                System.err.println("Couldn't save. Error: " + e);
-            }
-        }));
-
-        mainMenu.addMenuItem(new MenuItem("Save As",            () -> {
-            try {
-                saveAs();
-            } catch (Exception e) {
-                System.err.println("Couldn't create new file. Error: " + e);
-            }
-        }));
+        mainMenu.addMenuItem(new MenuItem("Save",               () -> save()));
+        mainMenu.addMenuItem(new MenuItem("Save As",            () -> saveAs()));
     }
 
     public void mdi() {
@@ -239,7 +225,7 @@ public class Controller {
         return d;
     }
 
-    private void save() throws IOException {
+    private void save() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filename))) {
             store.save(bw);
             System.out.println("Wrote store to " + filename);
@@ -248,7 +234,7 @@ public class Controller {
         }
     }
 
-    private void saveAs() throws IOException {
+    private void saveAs() {
         System.out.println("Enter a Store filename to save: ");
         String s = in.nextLine();
         if (s.isEmpty()) return;
