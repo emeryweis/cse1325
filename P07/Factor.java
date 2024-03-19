@@ -64,10 +64,13 @@ public class Factor implements Runnable {
             bigints = Arrays.copyOfRange(args, 1, args.length);
 
             Thread[] threads = new Thread[numThreads];
-            for (int i = 0; i < numThreads; i++) {
-                threads[i] = new Thread(() -> solve(0, 0, 4));
-                threads[i].run();
-            }
+            
+            threads[0] = new Thread(() -> solve(0, 0, 6));
+            threads[0].run();
+
+            threads[1] = new Thread(() -> solve(1, 6, 13));
+            threads[1].run();
+            
             for (int i = 0; i < numThreads; i++) {
                 threads[i].join();
             }
