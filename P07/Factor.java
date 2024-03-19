@@ -62,17 +62,20 @@ public class Factor implements Runnable {
         try {
             numThreads = Integer.parseInt(args[0]);
             bigints = Arrays.copyOfRange(args, 1, args.length);
-            
+            Thread t1 = new Thread(() -> solve(0, 0, 5));
+            Thread t2 = new Thread(() -> solve(1, 5, 8));
+            Thread t3 = new Thread(() -> solve(2, 8, bigints.length));
 
+            t1.run();
+            t2.run();
+            t3.run();
+            
         } catch(NumberFormatException e) {
             numThreads = 1;
             bigints = args;
         }
 
         // Factor all of the big integers
-        new Thread(() -> solve(0, 0, 5));
-        new Thread(() -> solve(1, 5, 8));
-        new Thread(() -> solve(2, 8, bigints.length));
 
         // Print all solutions
         for(PrimeFactors solution : solutions)
