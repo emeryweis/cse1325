@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 // PrimeFactors' constructor factors an arbitrarily large BigInteger 
 //     into its prime number factors
-class PrimeFactors {
+class PrimeFactors implements Runnable {
     public PrimeFactors(BigInteger number) {
         this.number = number;
         factors = new ArrayList<>();
@@ -30,6 +30,11 @@ class PrimeFactors {
         sb.append(" = " + number);
         return sb.toString();
     }
+
+    @Override
+    public void run() {
+    }
+
     private BigInteger number;             // The factored number
     private ArrayList<BigInteger> factors; // Prime numbers that comprise number
 }

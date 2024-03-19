@@ -62,14 +62,7 @@ public class Factor implements Runnable {
         try {
             numThreads = Integer.parseInt(args[0]);
             bigints = Arrays.copyOfRange(args, 1, args.length);
-            Thread[] threads = new Thread[numThreads];
-            for (int i = 0; i < numThreads; i++) {
-                threads[i] = new Thread(new Factor());
-                threads[i].start();
-            }
-            for (int i = 0; i < numThreads; i++) {
-                threads[i].join();
-            }
+            
 
         } catch(NumberFormatException e) {
             numThreads = 1;
@@ -77,7 +70,9 @@ public class Factor implements Runnable {
         }
 
         // Factor all of the big integers
-        //solve(0, 0, bigints.length);
+        solve(0, 0, 5);
+        solve(1, 5, 8);
+        solve(2, 8, bigints.length);
 
         // Print all solutions
         for(PrimeFactors solution : solutions)
@@ -85,6 +80,9 @@ public class Factor implements Runnable {
     }
     @Override
     public void run(){
+        for (int i = 0; i < numThreads; i++) {
+            System.out.println("Thread count: " + i);
+        }
     }
 
     // Solve bigints[firstIndex] to bigints[lastIndex-1]
@@ -96,6 +94,8 @@ public class Factor implements Runnable {
         for(int i=firstIndex; i<lastIndexPlusOne; ++i) {
             try {
                 PrimeFactors pf = new PrimeFactors(new BigInteger(bigints[i]));
+                Thread t = new Thread(pf);
+                t.start();
                 solutions.add(pf);
             } catch (Exception e) {
                 System.err.println("Failed to solve " + bigints[i] + ": " + e);
