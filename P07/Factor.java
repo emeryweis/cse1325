@@ -70,19 +70,18 @@ public class Factor implements Runnable {
         }
 
         // Factor all of the big integers
-        solve(0, 0, 5);
-        solve(1, 5, 8);
-        solve(2, 8, bigints.length);
+        new Thread(() -> solve(0, 0, 5));
+        new Thread(() -> solve(1, 5, 8));
+        new Thread(() -> solve(2, 8, bigints.length));
 
         // Print all solutions
         for(PrimeFactors solution : solutions)
             System.out.println(solution);
     }
+
     @Override
-    public void run(){
-        for (int i = 0; i < numThreads; i++) {
-            System.out.println("Thread count: " + i);
-        }
+    public void run() {
+
     }
 
     // Solve bigints[firstIndex] to bigints[lastIndex-1]
@@ -94,8 +93,6 @@ public class Factor implements Runnable {
         for(int i=firstIndex; i<lastIndexPlusOne; ++i) {
             try {
                 PrimeFactors pf = new PrimeFactors(new BigInteger(bigints[i]));
-                Thread t = new Thread(pf);
-                t.start();
                 solutions.add(pf);
             } catch (Exception e) {
                 System.err.println("Failed to solve " + bigints[i] + ": " + e);
