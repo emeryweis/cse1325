@@ -51,5 +51,8 @@ public class TestProduct {
             System.err.println("\nFAILED with error code " + result);
             System.exit(result);
         }
+        if(result == 0) {
+            System.out.println("Nice");
+        }
     }
 }
