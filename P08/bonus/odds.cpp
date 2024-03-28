@@ -15,14 +15,15 @@ int main(int argc, char* argv[]) {
         if (std::string(argv[i]).length() % 2 == 1) odds.push_back(argv[i]);
     }
 
-    std::cout << "Evens: " << std::endl;
+    std::cout << "Evens length: " << std::endl;
     for (std::string s : evens) {
         std::cout << s << " " << std::endl;
     }
 
-    std::cout << "\n" << std::endl;
-    std::cout << "Odds: " << std::endl;
+    std::cout << "\n\n" << std::endl;
+    std::cout << "Odds lenght: " << std::endl;
     for (std::string s : odds) {
         std::cout << s << " " << std::endl;
     }
+
 }
