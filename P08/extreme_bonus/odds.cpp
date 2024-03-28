@@ -22,9 +22,11 @@ int main(int argc, char* argv[]) {
         if (std::string(argv[i]).length() % 2 == 1) odds.push_back(argv[i]);
     }
 
+    //  declaring seed for random number generator
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 
     std::sort(odds.begin(), odds.end());
+    //shuffling with randomly generated seed
     std::shuffle (evens.begin(), evens.end(), std::default_random_engine(seed));
 
 
