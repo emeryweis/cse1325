@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 #include <algorithm>    // shuffle and sort
-#include <random>
-#include <chrono>
+#include <random>       // imports std::default_random_engine
+#include <chrono>       // imports std::chrono::system_clock
 
 /*
     Now is the time for all good men to come to the aid of their country
