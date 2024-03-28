@@ -2,6 +2,12 @@
 #include <string>
 #include <vector>
 #include <algorithm>    // shuffle and sort
+#include <random>
+#include <chrono>
+
+/*
+    Now is the time for all good men to come to the aid of their country
+*/
 
 
 int main(int argc, char* argv[]) {
@@ -16,8 +22,10 @@ int main(int argc, char* argv[]) {
         if (std::string(argv[i]).length() % 2 == 1) odds.push_back(argv[i]);
     }
 
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();;
+
     std::sort(odds.begin(), odds.end());
-    //std::random_shuffle(evens.begin(), evens.end());
+    std::shuffle (evens.begin(), evens.end(), std::default_random_engine(seed));
 
 
     std::cout << "Odds length (sorted): " << std::endl;
