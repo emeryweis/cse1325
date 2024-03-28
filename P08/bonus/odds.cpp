@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
     }
 
     std::cout << "\n\n" << std::endl;
-    std::cout << "Odds lenght: " << std::endl;
+    std::cout << "Odds length: " << std::endl;
     for (std::string s : odds) {
         std::cout << s << " " << std::endl;
     }
