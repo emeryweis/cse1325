@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include "Polynomial.h"
+
 
 class Linear : public Polynomial {
   public:
@@ -9,5 +11,11 @@ class Linear : public Polynomial {
         }
     }
 
+    std::vector<double[]> solve() {
+        _coefficients[0] = a;
+        _coefficients[1] = b;
 
-}
+        return ((-b) / a);
+    }
+
+};
