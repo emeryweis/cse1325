@@ -11,9 +11,13 @@ class Linear : public Polynomial {
         }
     }
 
-    std::vector<double[]> solve() {
-        _coefficients[0] = a;
-        _coefficients[1] = b;
+    virtual ~Linear(){
+        std::cerr << "Destructing linear" << std::endl;
+    }
+
+    std::vector<double> solve() {
+        coefficients[0] = a;
+        coefficients[1] = b;
 
         return ((-b) / a);
     }

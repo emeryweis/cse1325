@@ -4,14 +4,14 @@
 #include <iostream>
 #include <vector>
 
-class Polynomial() {
-  public:
-    Polynomial(double[] coefficients) {}
-    virtual ~Polynomial() {}
-    std::vector<double[]> solve() = 0;
-
+class Polynomial {
   private:
-    std::vector<double[]> _coefficients = {a, b, c};
+    std::vector<double>* _coefficients;
+  public:
+    Polynomial(std::vector<double> _coefficients) {}
+    virtual ~Polynomial() {}
+    virtual std::vector<double> solve() = 0;
+
 };
 
 #endif
