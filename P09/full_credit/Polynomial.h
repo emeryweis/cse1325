@@ -6,9 +6,10 @@
 
 class Polynomial {
   private:
-    std::vector<double>* _coefficients;
+    std::vector<double> _coefficients;
+
   public:
-    Polynomial(std::vector<double> _coefficients) {}
+    Polynomial(std::vector<double> coefficients);
     virtual ~Polynomial() {}
     virtual std::vector<double> solve() = 0;
 
