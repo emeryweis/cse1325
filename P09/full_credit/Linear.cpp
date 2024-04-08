@@ -7,7 +7,11 @@
 #include "Linear.h"
 
 
-Linear::Linear(std::vector<double>& coefficients) : Polynomial(coefficients) {}
+Linear::Linear(std::vector<double>& coefficients) : Polynomial(coefficients) {
+    if (_coefficients.size() != 2) {
+        throw std::invalid_argument("a may not be 0");
+    }
+}
 
 std::vector<double> Linear::solve() {
     double a = _coefficients[0];

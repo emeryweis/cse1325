@@ -1,0 +1,13 @@
+CXXFLAGS = --std=c++17
+solver: solver.o Polynomial.o Linear.o Quadratic.o *.h
+    $(CXX) $(CXXFLAGS) solver.o Polynomial.o Linear.o Quadratic.o -o solver
+solver.o: solver.cpp *.h
+    $(CXX) $(CXXFLAGS) -c solver.cpp -o solver.o
+Polynomial.o: Polynomial.cpp *.h
+    $(CXX) $(CXXFLAGS) -c Polynomial.cpp -o Polynomial.o
+Linear.o: Linear.cpp *.h
+    $(CXX) $(CXXFLAGS) -c Linear.cpp -o Linear.o
+Quadratic.o: Quadratic.cpp *.h
+    $(CXX) $(CXXFLAGS) -c Quadratic.cpp -o Quadratic.o
+clean:
+ rm -f *.o *.gch a.out solver
