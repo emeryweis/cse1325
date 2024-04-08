@@ -18,9 +18,11 @@ std::vector<double> Linear::solve() {
     double b = _coefficients[1];
     return {-b/a};
 }
+/*
 Linear::~Linear() {
     delete &_coefficients;
 }
+*/
 
 
 

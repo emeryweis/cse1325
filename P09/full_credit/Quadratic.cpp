@@ -12,10 +12,11 @@ Quadratic::Quadratic(std::vector<double>& coefficients) : Polynomial(coefficient
         throw std::runtime_error("a may not be 0");
     }
 }
-
+/*
 Quadratic::~Quadratic() {
     delete &_coefficients;
 }
+*/
 
 std::vector<double> Quadratic::solve() {
     double a = _coefficients[0];

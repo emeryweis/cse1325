@@ -10,7 +10,9 @@
 class Quadratic : public Polynomial {
   public:
     Quadratic(std::vector<double>& coefficients);
-    virtual ~Quadratic() {}
+    virtual ~Quadratic() {
+        delete &_coefficients;
+    }
     virtual std::vector<double> solve();
 
 };

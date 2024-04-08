@@ -8,10 +8,12 @@
 #include "Polynomial.h"
 
 class Linear : public Polynomial {
-  public:  
-    Linear(std::vector<double>& coefficients);
-    virtual ~Linear() {}
-    virtual std::vector<double> solve();
+    public:  
+        Linear(std::vector<double>& coefficients);
+        virtual ~Linear() {
+            delete &_coefficients;
+        }
+        virtual std::vector<double> solve();
 
 };
 

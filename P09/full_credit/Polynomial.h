@@ -12,7 +12,9 @@ class Polynomial {
 
   public:
     Polynomial(std::vector<double>& coefficients);
-    virtual ~Polynomial() {}
+    virtual ~Polynomial() {
+        delete &_coefficients;
+    }
     virtual std::vector<double> solve() = 0;
 
 };
