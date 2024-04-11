@@ -10,8 +10,13 @@ Inch::Inch() : Inch(0, 0, 2) { }
 
 Inch Inch::operator+(const Inch& rhs) {
 
-    int new_numerator = (_numerator + rhs._numerator);
-    int new_whole = (_whole + rhs._whole);
+    int left_lcd = 64/this->_denominator;
+    left_lcd *= this->_numerator;
+    int right_lcd = 64/rhs._denominator;
+    right_lcd *= rhs._numerator;
 
-    return Inch(new_whole, new_numerator, 64)
+    int new_numerator = (left_lcd + right_lcd);
+    int new_whole = (this->_whole + rhs._whole);
+
+    return Inch(new_whole, new_numerator, 64);
 }
