@@ -35,9 +35,13 @@ std::istream& operator>>(std::istream& ist, Inch& inch) {
 }
 
 const int Inch::compare(const Inch& rhs) {
-    if (this->_whole < rhs._whole) return -1;
-    if ((this->_numerator)/(this->_denominator) < (rhs._numerator)/(rhs._denominator)) return -1;
-    if (this->_whole > rhs._whole) return 1;
-    if ((this->_numerator)/(this->_denominator) > (rhs._numerator)/(rhs._denominator)) return 1;
+    double me = static_cast<double>(this->_whole) + 
+    (static_cast<double>(this->_numerator) / static_cast<double>(this->_denominator));
+
+    double you = static_cast<double>(rhs._whole) + 
+    (static_cast<double>(rhs._numerator) / static_cast<double>(rhs._denominator));
+
+    if (me < you) return -1;
+    if (me > you) return 1;
     return 0;
 }
