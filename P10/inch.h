@@ -12,12 +12,12 @@ class Inch {
     Inch();
 
     Inch operator+(const Inch& rhs);
-    bool operator==(const Inch& rhs);
-    bool operator!=(const Inch& rhs);
-    bool operator<(const Inch& rhs);
-    bool operator<=(const Inch& rhs);
-    bool operator>(const Inch& rhs);
-    bool operator>=(const Inch& rhs);
+    bool operator==(const Inch& rhs) {return (compare(rhs) == 0);}
+    bool operator!=(const Inch& rhs) {return (compare(rhs) != 0);}
+    bool operator<(const Inch& rhs) {return (compare(rhs) < 0);}
+    bool operator<=(const Inch& rhs) {return (compare(rhs) <= 0);}
+    bool operator>(const Inch& rhs) {return (compare(rhs) > 0);} 
+    bool operator>=(const Inch& rhs) {return (compare(rhs) >= 0);}
     
     friend std::ostream& operator<<(std::ostream& ost, const Inch& inch);
     friend std::istream& operator>>(std::istream& ist, Inch& inch);

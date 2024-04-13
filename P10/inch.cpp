@@ -30,5 +30,14 @@ std::ostream& operator<<(std::ostream& ost, const Inch& inch) {
 std::istream& operator>>(std::istream& ist, Inch& inch) {
     char c;
     ist >> inch._whole >> inch._numerator >> c >> inch._denominator;
+    inch.validate();
     return ist;
+}
+
+const int Inch::compare(const Inch& rhs) {
+    if (this->_whole < rhs._whole) return -1;
+    if ((this->_numerator)/(this->_denominator) < (rhs._numerator)/(rhs._denominator)) return -1;
+    if (this->_whole > rhs._whole) return 1;
+    if ((this->_numerator)/(this->_denominator) > (rhs._numerator)/(rhs._denominator)) return 1;
+    return 0;
 }
