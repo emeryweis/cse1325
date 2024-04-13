@@ -1,6 +1,7 @@
 //  inch.cpp
 
 #include <iostream>
+#include <iomanip>
 #include "inch.h"
 
 Inch::Inch(int whole, int numerator, int denominator) : _whole{whole}, _numerator{numerator}, _denominator{denominator} {
@@ -19,4 +20,15 @@ Inch Inch::operator+(const Inch& rhs) {
     int new_whole = (this->_whole + rhs._whole);
 
     return Inch(new_whole, new_numerator, 64);
+}
+
+
+std::ostream& operator<<(std::ostream& ost, const Inch& inch) {
+    ost << inch._whole << " " << inch._numerator << "/" << inch._denominator;
+    return ost;
+}
+std::istream& operator>>(std::istream& ist, Inch& inch) {
+    char c;
+    ist >> inch._whole >> inch._numerator >> c >> inch._denominator;
+    return ist;
 }
