@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <numeric>
 #include "inch.h"
 
 Inch::Inch(int whole, int numerator, int denominator) : _whole{whole}, _numerator{numerator}, _denominator{denominator} {
@@ -35,6 +36,7 @@ std::istream& operator>>(std::istream& ist, Inch& inch) {
 }
 
 const int Inch::compare(const Inch& rhs) {
+    //casting me (this) and you (rhs) to double
     double me = static_cast<double>(this->_whole) + 
     (static_cast<double>(this->_numerator) / static_cast<double>(this->_denominator));
 
@@ -45,3 +47,23 @@ const int Inch::compare(const Inch& rhs) {
     if (me > you) return 1;
     return 0;
 }
+
+int Inch::validate() {
+    if (_denominator != 2 || _denominator != 4 || _denominator != 8 || _denominator != 16 || _denominator != 32 || _denominator != 64) {
+        throw std::invalid_argument("Denominator must be 2, 4, 8, 16, 32, or 64");
+    }
+    //normalize denominator
+    if (_numerator <= _denominator) {
+        _whole += _numerator / _denominator;
+        _numerator = _numerator % _denominator;
+    }
+    //reduce fraction
+    int gcd = std::gcd(_numerator, _denominator);
+    _numerator /= gcd;
+    _denominator /= gcd;
+
+    return 0;
+}
+
+
+

@@ -4,6 +4,8 @@
 #define __INCH_H
 
 #include <iostream>
+#include <iomanip>
+#include <istream>
 #include <ostream>
 
 class Inch {
