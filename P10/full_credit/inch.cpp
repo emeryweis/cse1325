@@ -58,7 +58,7 @@ int Inch::validate() {
         throw std::invalid_argument("Denominator must be 2, 4, 8, 16, 32, or 64");
     }
     //normalize denominator
-    if (_numerator <= _denominator) {
+    if (_numerator >= _denominator) {
         _whole += _numerator / _denominator;
         _numerator = _numerator % _denominator;
     }
