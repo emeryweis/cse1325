@@ -3,21 +3,22 @@
 
 #include <iostream>
 #include <string>
-#include <iostream>
 #include <istream>
 #include <ostream>
 
-class University {
-  private:
-    std::string _name;
-    int _enrollment;
 
-  public:
-    University(std::string _name, int _enrollment);
-    const std::string name();
-    const int enrollment();
-    friend istream& operator>>(istream& ist, University& reading);
-    friend ostream& operator<<(ostream& ost, const University& writing);
+class University {
+    private:
+        std::string _name;
+        int _enrollment;
+        void validate();
+
+    public:
+        University(std::string _name = "", int _enrollment = 0);
+        const std::string name();
+        const int enrollment();
+        friend std::istream& operator>>(std::istream& ist, University& reading);
+        friend std::ostream& operator<<(std::ostream& ost, const University& writing);
 };
 
 #endif
