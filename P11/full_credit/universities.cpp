@@ -23,8 +23,12 @@ int main(int argc, char* argv[]) {
 
     std::map<state, Universities> universities;
     std::string state, university;
+    
     while (inputFile >> state >> university) {
-        universities[state].push_back(University(university));
+        if (universities.find(state) == universities.end()) {
+            universities[state] = std::vector<University>();
+        }
+        universities[state].push_back({university});
     }
 
 }
