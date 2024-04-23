@@ -27,3 +27,12 @@ std::ostream& operator<<(std::ostream& ost, const University& writing) {
     ost << writing._name << " has an enrollment of " << writing._enrollment;
     return ost;
 }
+
+void University::validate() {
+    if (_enrollment < 0) {
+        throw std::invalid_argument("University enrollment cannot be negative.");
+    }
+    if (_enrollment < 0 && _name.empty()) {
+        throw std::invalid_argument("University cannot be anonymous.");
+    }
+}
