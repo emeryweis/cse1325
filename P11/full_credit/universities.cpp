@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
 
     std::map<state, Universities> universities;
     std::string state, university;
-    
+
     while (inputFile >> state >> university) {
         if (universities.find(state) == universities.end()) {
             universities[state] = std::vector<University>();
@@ -31,4 +31,23 @@ int main(int argc, char* argv[]) {
         universities[state].push_back({university});
     }
 
+    while (true) {
+        std::string inputState;
+        std::cout << "Enter a state (2 letter abbreviation): ";
+        std::getline(std::cin, inputState);
+
+        if (inputState.empty()) {
+            break;
+        }
+        if (universities.find(inputState) == universities.end()) {
+            std::cout << "No universities found for " << inputState << std::endl;
+        } else {
+            std::cout << "Universities in " << inputState << ":" << std::endl;
+            for (const auto& university : universities[inputState]) {
+                std::cout << "- " << university << std::endl;
+            }
+        }
+    }
+
+    return 0;
 }
